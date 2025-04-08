@@ -28,6 +28,7 @@ class Player(CircleShape):
        
 
     def update(self, dt):
+
         keys = pygame.key.get_pressed()
         
 
@@ -41,7 +42,9 @@ class Player(CircleShape):
             self.move(dt, -1)  
         if keys[pygame.K_SPACE ]:
             self.shoot() 
-            self.timer -= dt
+        
+        self.timer = max(0, self.timer - dt)
+        
 
     def move(self, dt, direction):
         movement = pygame.Vector2(0, 1).rotate(self.rotation)
