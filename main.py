@@ -33,7 +33,6 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill((0, 0, 0))
-        print(f"shot group size: {len(shooting)}")
         #player.draw(screen)
         for drawing in drawable:
             drawing.draw(screen)
@@ -51,7 +50,7 @@ def main():
         for asteroid in asteroids:
             for shot in shooting:
                 if asteroid.collision_check(shot):
-                    asteroid.kill()
+                    asteroid.split()
                     shot.kill()
 
         pygame.display.flip()
